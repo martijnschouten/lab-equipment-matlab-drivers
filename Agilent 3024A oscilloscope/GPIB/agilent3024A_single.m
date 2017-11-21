@@ -9,6 +9,18 @@ function [data1,data2,time] = agilent3024A_single(scope, tRange,Vrange1,Vrange2,
 %to find the primary GPIB adress of the scope run tmtool
 %scan for GPIB cards and scan for GPIB devices. 
 
+%output parameters:
+%data1: vector with 2048 measured voltages on input 1
+%data2: vector with 2048 measured voltages on input 2
+%time: vector with the time at which the measurements in data1 and data2 were taken
+
+%input parameters:
+%scope: matlab GPIB object made by using agilent54622D_init
+%tRange: double with the total measurement time
+%Vrange1: double with the gain of channel 1 in maximum voltage that can be measured
+%Vrange1: double with the gain of channel 2 in maximum voltage that can be measured
+%samples: number of samples taken during tRange
+
 
 fprintf(scope, [':TIMEBASE:RANGE ', num2str(tRange)]);
 actualTimeRange = str2num(query(scope, ':TIMEBASE:RANGE?'));
