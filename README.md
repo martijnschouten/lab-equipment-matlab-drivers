@@ -7,3 +7,5 @@ General usage is:
 device_object = device_init()  
 device_function(device_object,parameters)  
 ```
+
+If you have an script that you think should be added to this repository, let me know!
