@@ -1,0 +1,437 @@
+// File created by SMAC Control Center v1.42
+// Manual edits will NOT be imported in the original SMAC Control Center file.
+//
+0 W 0x012C05 0 // [MacroNumber 0]
+0 W 0x022C05 0
+0 W 0x032C05 0x00609810000000FF // [Homing Endstop_and_indexpulse,Negative,Acc=10000,Vendstop=10000,Force=50,Vindex=500,Timeout=15000,Offset=0]
+0 W 0x022C05 1
+0 W 0x032C05 0x0160994000002710
+0 W 0x022C05 2
+0 W 0x032C05 0x0221022000000032
+0 W 0x022C05 3
+0 W 0x032C05 0x02609940000001F4
+0 W 0x022C05 4
+0 W 0x032C05 0x00609A4000002710
+0 W 0x022C05 5
+0 W 0x032C05 0x0121022000003A98
+0 W 0x022C05 6
+0 W 0x032C05 0x00607C4000000000
+0 W 0x022C05 7
+0 W 0x032C05 0x012C004000000005 // Prepare ACCUM to call system macro #5 : MOTOR_ON
+0 W 0x022C05 8
+0 W 0x032C05 0x012C04400000003F // Call system macro
+0 W 0x022C05 9
+0 W 0x032C05 0x012C004000000007 // Prepare ACCUM to call system macro #7 : HOMING
+0 W 0x022C05 10
+0 W 0x032C05 0x012C04400000003F // Call system macro
+0 W 0x022C05 11
+0 W 0x032C05 0x0D2C0240000007D0 // [Wait Time,Timeout=2000]
+0 W 0x022C05 12
+0 W 0x032C05 0x00607A4000000708 // [PositionMove Absolute,Target=1800,Vel=30000,Acc=30000,Change_immediate]
+0 W 0x022C05 13
+0 W 0x032C05 0x0060814000007530
+0 W 0x022C05 14
+0 W 0x032C05 0x0060834000007530
+0 W 0x022C05 15
+0 W 0x032C05 0x0060844000007530
+0 W 0x022C05 16
+0 W 0x032C05 0x012C004000000001 // Prepare ACCUM to call system macro #1 : ABSOLUTE_POSITION_MOVE_CHANGE_IMMEDIATE
+0 W 0x022C05 17
+0 W 0x032C05 0x012C04400000003F // Call system macro
+0 W 0x022C05 18
+0 W 0x032C05 0x0D2C0240000003E8 // [Wait Time,Timeout=1000]
+0 W 0x022C05 19
+0 W 0x032C05 0x00607A4000000000 // [PositionMove Absolute,Target=0,Vel=30000,Acc=30000,Change_immediate]
+0 W 0x022C05 20
+0 W 0x032C05 0x0060814000007530
+0 W 0x022C05 21
+0 W 0x032C05 0x0060834000007530
+0 W 0x022C05 22
+0 W 0x032C05 0x0060844000007530
+0 W 0x022C05 23
+0 W 0x032C05 0x012C004000000001 // Prepare ACCUM to call system macro #1 : ABSOLUTE_POSITION_MOVE_CHANGE_IMMEDIATE
+0 W 0x022C05 24
+0 W 0x032C05 0x012C04400000003F // Call system macro
+0 W 0x022C05 25
+0 W 0x032C05 0x0D2C024000001770 // [Wait Time,Timeout=6000]
+0 W 0x022C05 26
+0 W 0x032C05 0x032C044000000001 // Sequence Macro Jump,MacroNumber=1 
+0 W 0x012C05 1 // [MacroNumber 1]
+0 W 0x022C05 0
+0 W 0x032C05 0x00608740000186A0 // [ForceMove Target=0,Slope=100000]
+0 W 0x022C05 1
+0 W 0x032C05 0x012C004000000009 // Set profile force mode first. Prepare ACCUM to call system macro #9 : FORCE_MOVE
+0 W 0x022C05 2
+0 W 0x032C05 0x012C04400000003F // Call system macro
+0 W 0x022C05 3
+0 W 0x032C05 0x0060712000000000 // Apply target force
+0 W 0x022C05 4
+0 W 0x032C05 0x032C044000000002 // Sequence Macro Jump,MacroNumber=2 
+0 W 0x012C05 2 // [MacroNumber 2]
+0 W 0x022C05 0
+0 W 0x032C05 0x032C044000000002 // Sequence Macro Jump,MacroNumber=2 
+//
+// Start of the system macro area.
+// Marcos 60 to 63 are reserved for system macros.
+//
+// To call a system macro:
+// First load ACCUM with the function number (see below)
+// Then call Macro number 63
+//
+// The macros all modify ACCUM
+//
+// The following function numbers are defined:
+// 0 - Absolute position move
+// 1 - Absolute position move and change set immediately
+// 2 - Relative position move
+// 3 - Relative position move and change set immediately
+// 4 - Wait for target reached
+// 5 - Motor on
+// 6 - Motor off
+// 7 - Homing
+// 8 - Profile velocity move
+// 9 - Profile force move
+// 10- Homing on current position (mode 35)
+//
+//
+0x00 W 0x012C05 0x3F // // Basic functions . This macro handles functions 0 to 4
+0x00 w 0x022C05 0
+0x00 W 0x032C05 0x62C024000000000 // 0: Do a absolute position move
+0x00 w 0x022C05 1
+0x00 W 0x032C05 0x52C04400000000B
+0x00 w 0x022C05 2
+0x00 W 0x032C05 0x62C024000000001 // 1: Do a absolute position move and change set immediately
+0x00 w 0x022C05 3
+0x00 W 0x032C05 0x52C044000000017
+0x00 w 0x022C05 4
+0x00 W 0x032C05 0x62C024000000002 // 2: Do a relative position move
+0x00 w 0x022C05 5
+0x00 W 0x032C05 0x52C044000000023
+0x00 w 0x022C05 6
+0x00 W 0x032C05 0x62C024000000003 // 3: Do a relative position move and change set immediately
+0x00 w 0x022C05 7
+0x00 W 0x032C05 0x52C04400000002F
+0x00 w 0x022C05 8
+0x00 W 0x032C05 0x62C024000000004 // 4: Wait for target reached
+0x00 w 0x022C05 9
+0x00 W 0x032C05 0x52C04400000003C
+0x00 w 0x022C05 10
+0x00 W 0x032C05 0x32C04400000003E // Implementation not in this macro: check next in chain
+//
+0x00 w 0x022C05 11
+0x00 W 0x032C05 0x172C014000006061 // **** CASE 0 ****  Absolute position move: Switch to profile position mode.Get Modes of operation display in ACCUM
+0x00 w 0x022C05 12
+0x00 W 0x032C05 0x72C024000000001 // Prevent unnecessary mode changes
+0x00 w 0x022C05 13
+0x00 W 0x032C05 0x60601000000001 // Profile position mode
+0x00 w 0x022C05 14
+0x00 W 0x032C05 0x6040200000001F // New setpoint bit high
+0x00 w 0x022C05 15
+0x00 W 0x032C05 0x172C014000006041 // Wait until setpoint acknowledge bit is high
+0x00 w 0x022C05 16
+0x00 W 0x032C05 0xB2C02400000000C // If Setpoint acknowledge is clear
+0x00 w 0x022C05 17
+0x00 W 0x032C05 0x62C0440FFFFFFFE // Loop back
+0x00 w 0x022C05 18
+0x00 W 0x032C05 0x6040200000000F // New setpoint bit low
+0x00 w 0x022C05 19
+0x00 W 0x032C05 0x172C014000006041 // Now wait until the setpoint acknowledge bit is low
+0x00 w 0x022C05 20
+0x00 W 0x032C05 0xA2C02400000000C // If Setpoint acknowledge bit is set
+0x00 w 0x022C05 21
+0x00 W 0x032C05 0x62C0440FFFFFFFE // Loop back
+0x00 w 0x022C05 22
+0x00 W 0x032C05 0x22C044000000000 // Return
+//
+0x00 w 0x022C05 23
+0x00 W 0x032C05 0x172C014000006061 // **** CASE 1 **** Absolute position move and change set immediately: Switch to profile position mode. Get Modes of operation display in ACCUM
+0x00 w 0x022C05 24
+0x00 W 0x032C05 0x72C024000000001 // Prevent unnecessary mode changes
+0x00 w 0x022C05 25
+0x00 W 0x032C05 0x60601000000001 // Profile position mode
+0x00 w 0x022C05 26
+0x00 W 0x032C05 0x6040200000003F // New setpoint + change set immediately bits high
+0x00 w 0x022C05 27
+0x00 W 0x032C05 0x172C014000006041 // Wait until setpoint acknowledge bit is high
+0x00 w 0x022C05 28
+0x00 W 0x032C05 0xB2C02400000000C // If Setpoint acknowledge is clear
+0x00 w 0x022C05 29
+0x00 W 0x032C05 0x62C0440FFFFFFFE // Loop back
+0x00 w 0x022C05 30
+0x00 W 0x032C05 0x6040200000000F // New setpoint + change set immediately bits low
+0x00 w 0x022C05 31
+0x00 W 0x032C05 0x172C014000006041 // Now wait until the setpoint acknowledge bit is low
+0x00 w 0x022C05 32
+0x00 W 0x032C05 0xA2C02400000000C // If Setpoint acknowledge bit is set
+0x00 w 0x022C05 33
+0x00 W 0x032C05 0x62C0440FFFFFFFE // Loop back
+0x00 w 0x022C05 34
+0x00 W 0x032C05 0x22C044000000000 // Return
+//
+0x00 w 0x022C05 35
+0x00 W 0x032C05 0x172C014000006061 // **** CASE 2 **** Relative position move: Switch to profile position mode. Get Modes of operation display in ACCUM
+0x00 w 0x022C05 36
+0x00 W 0x032C05 0x72C024000000001 // Prevent unnecessary mode changes
+0x00 w 0x022C05 37
+0x00 W 0x032C05 0x60601000000001 // Profile position mode
+0x00 w 0x022C05 38
+0x00 W 0x032C05 0x6040200000005F // New setpoint + relative bits high
+0x00 w 0x022C05 39
+0x00 W 0x032C05 0x172C014000006041 // Wait until setpoint acknowledge bit is high
+0x00 w 0x022C05 40
+0x00 W 0x032C05 0xB2C02400000000C // If Setpoint acknowledge is clear
+0x00 w 0x022C05 41
+0x00 W 0x032C05 0x62C0440FFFFFFFE // Loop back
+0x00 w 0x022C05 42
+0x00 W 0x032C05 0x6040200000000F // New setpoint + change set immediately bits low
+0x00 w 0x022C05 43
+0x00 W 0x032C05 0x172C014000006041 // Now wait until the setpoint acknowledge bit is low
+0x00 w 0x022C05 44
+0x00 W 0x032C05 0xA2C02400000000C // If Setpoint acknowledge bit is set
+0x00 w 0x022C05 45
+0x00 W 0x032C05 0x62C0440FFFFFFFE // Loop back
+0x00 w 0x022C05 46
+0x00 W 0x032C05 0x22C044000000000 // Return
+//
+0x00 w 0x022C05 47
+0x00 W 0x032C05 0x172C014000006061 // **** CASE 3 **** Relative position move and change set immediately: Switch to profile position mode. Get Modes of operation display in ACCUM
+0x00 w 0x022C05 48
+0x00 W 0x032C05 0x72C024000000001 // Prevent unnecessary mode changes
+0x00 w 0x022C05 49
+0x00 W 0x032C05 0x60601000000001 // Profile position mode
+0x00 w 0x022C05 50
+0x00 W 0x032C05 0x6040200000007F // New setpoint + change set immediately + relative bits high
+0x00 w 0x022C05 51
+0x00 W 0x032C05 0x172C014000006041 // Wait until setpoint acknowledge bit is high
+0x00 w 0x022C05 52
+0x00 W 0x032C05 0xB2C02400000000C // If Setpoint acknowledge is clear
+0x00 w 0x022C05 53
+0x00 W 0x032C05 0x62C0440FFFFFFFE // Loop back
+0x00 w 0x022C05 54
+0x00 W 0x032C05 0x6040200000000F // New setpoint + change set immediately bits low
+0x00 w 0x022C05 55
+0x00 W 0x032C05 0x172C014000006041 // Now wait until the setpoint acknowledge bit is low
+0x00 w 0x022C05 56
+0x00 W 0x032C05 0xA2C02400000000C // If Setpoint acknowledge bit is set
+0x00 w 0x022C05 57
+0x00 W 0x032C05 0x62C0440FFFFFFFE // Loop back
+0x00 w 0x022C05 58
+0x00 W 0x032C05 0x22C044000000000 // Return
+//
+0x00 w 0x022C05 59
+0x00 W 0x032C05 0x172C014000006041 // **** CASE 4 **** Wait for target reached: Get status in ACCUM
+0x00 w 0x022C05 60
+0x00 W 0x032C05 0xB2C02400000000A // If Target reached bit is clear
+0x00 w 0x022C05 61
+0x00 W 0x032C05 0x62C0440FFFFFFFE // Loop back
+0x00 w 0x022C05 62
+0x00 W 0x032C05 0x22C044000000000 // Return
+//
+//
+//
+0x00 W 0x012C05 0x3E // // Basic functions . This macro handles functions 5 to 7
+0x00 w 0x022C05 0
+0x00 W 0x032C05 0x62C024000000005 // 5: Motor on
+0x00 w 0x022C05 1
+0x00 W 0x032C05 0x52C04400000000D
+0x00 w 0x022C05 2
+0x00 W 0x032C05 0x62C024000000006 // 6: Motor off
+0x00 w 0x022C05 3
+0x00 W 0x032C05 0x52C044000000019
+0x00 w 0x022C05 4
+0x00 W 0x032C05 0x62C024000000007 // 7: Homing
+0x00 w 0x022C05 5
+0x00 W 0x032C05 0x52C04400000001B
+0x00 w 0x022C05 6
+0x00 W 0x032C05 0x62C024000000008 // 8: Profile velocity move
+0x00 w 0x022C05 7
+0x00 W 0x032C05 0x52C044000000027
+0x00 w 0x022C05 8
+0x00 W 0x032C05 0x62C024000000009 // 9: Profile force move
+0x00 w 0x022C05 9
+0x00 W 0x032C05 0x52C04400000002B
+0x00 w 0x022C05 10
+0x00 W 0x032C05 0x62C02400000000A // 10: Homing on current position
+0x00 w 0x022C05 11
+0x00 W 0x032C05 0x52C04400000002F
+0x00 w 0x022C05 12
+0x00 W 0x032C05 0x22C044000000000 // Command not known: just return
+//
+0x00 w 0x022C05 13
+0x00 W 0x032C05 0x172C014000006041 // **** CASE 5 **** Motor on. Get status in ACCUM
+0x00 w 0x022C05 14
+0x00 W 0x032C05 0x52C01400000006F // Mask relevant bits
+0x00 w 0x022C05 15
+0x00 W 0x032C05 0x62C024000000027 // If operation enable
+0x00 w 0x022C05 16
+0x00 W 0x032C05 0x22C044000000000 // Return
+0x00 w 0x022C05 17
+0x00 W 0x032C05 0x62C024000000023 // If switched on
+0x00 w 0x022C05 18
+0x00 W 0x032C05 0x62C044000000005 // Write control word 15
+0x00 w 0x022C05 19
+0x00 W 0x032C05 0x62C024000000021 // If Ready to switch on
+0x00 w 0x022C05 20
+0x00 W 0x032C05 0x62C044000000002 // Write control word 7
+0x00 w 0x022C05 21
+0x00 W 0x032C05 0x60402000000006 // In all other cases first write control word 6 to enter "Ready to switch on" state
+0x00 w 0x022C05 22
+0x00 W 0x032C05 0x60402000000007
+0x00 w 0x022C05 23
+0x00 W 0x032C05 0x6040200000000F
+0x00 w 0x022C05 24
+0x00 W 0x032C05 0x22C044000000000 // Return
+//
+0x00 w 0x022C05 25
+0x00 W 0x032C05 0x60402000000007 // **** CASE 6 **** Motor off:
+0x00 w 0x022C05 26
+0x00 W 0x032C05 0x22C044000000000 // Return
+//
+0x00 w 0x022C05 27
+0x00 W 0x032C05 0x172C014000006061 // **** CASE 7 **** Homing: Set homing mode: Get mode of operation display in ACCUM
+0x00 w 0x022C05 28
+0x00 W 0x032C05 0x72C024000000006 // Avoid unnecessary mode of operation writes
+0x00 w 0x022C05 29
+0x00 W 0x032C05 0x60601000000006 // Homing mode
+0x00 w 0x022C05 30
+0x00 W 0x032C05 0x6040200000001F // Homing operation start
+0x00 w 0x022C05 31
+0x00 W 0x032C05 0xD2C02400000000A // Allow sone time for status bits to get stable
+0x00 w 0x022C05 32
+0x00 W 0x032C05 0x172C014000006041 // Get statusrregister
+0x00 w 0x022C05 33
+0x00 W 0x032C05 0x52C014000003400 // Mask relevant bits for homing (Bit 10, 12 and 13)
+0x00 w 0x022C05 34
+0x00 W 0x032C05 0x62C024000000000 // If Homing still in progress
+0x00 w 0x022C05 35
+0x00 W 0x032C05 0x62C0440FFFFFFFD // Loop back
+0x00 w 0x022C05 36
+0x00 W 0x032C05 0x6040200000000F // Motor on
+0x00 w 0x022C05 37
+0x00 W 0x032C05 0x60601000000001 // Switch to profile position mode
+0x00 w 0x022C05 38
+0x00 W 0x032C05 0x22C044000000000
+//
+0x00 w 0x022C05 39
+0x00 W 0x032C05 0x172C014000006061 // **** CASE 8 **** Profile velocity mode: Get mode of operation display in ACCUM
+0x00 w 0x022C05 40
+0x00 W 0x032C05 0x72C024000000003 // Avoid unnecessary mode of operation writes
+0x00 w 0x022C05 41
+0x00 W 0x032C05 0x60601000000003 // Profile velocity mode
+0x00 w 0x022C05 42
+0x00 W 0x032C05 0x22C044000000000 // Return
+//
+0x00 w 0x022C05 43
+0x00 W 0x032C05 0x172C014000006061 // **** CASE 9 **** Profile force mode: Get mode of operation display in ACCUM
+0x00 w 0x022C05 44
+0x00 W 0x032C05 0x72C024000000004 // Avoid unnecessary mode of operation writes
+0x00 w 0x022C05 45
+0x00 W 0x032C05 0x60601000000004 // Profile force mode
+0x00 w 0x022C05 46
+0x00 W 0x032C05 0x22C044000000000 // Return
+//
+0x00 w 0x022C05 47
+0x00 W 0x032C05 0x172C014000006061 // **** CASE 10 **** Homing on current position: Set homing mode: Get mode of operation display in ACCUM
+0x00 w 0x022C05 48
+0x00 W 0x032C05 0x72C024000000006 // Avoid unnecessary mode of operation writes
+0x00 w 0x022C05 49
+0x00 W 0x032C05 0x60601000000006 // Homing mode
+0x00 w 0x022C05 50
+0x00 W 0x032C05 0x172C014000006040 // Get control word in ACCUM
+0x00 w 0x022C05 51
+0x00 W 0x032C05 0x62C014000000010 // Set the start homing bit high
+0x00 w 0x022C05 52
+0x00 W 0x032C05 0x152C014000006040 // Write control word with start homing bit high
+0x00 w 0x022C05 53
+0x00 W 0x032C05 0xD2C02400000000A // Some delay
+0x00 w 0x022C05 54
+0x00 W 0x032C05 0x32C014000000010 // Set the start homing bit low
+0x00 w 0x022C05 55
+0x00 W 0x032C05 0x152C014000006040 // Write control word with start homing bit low
+0x00 w 0x022C05 56
+0x00 W 0x032C05 0x22C044000000000
+//
+// Macro number 61 is used for tuning.
+//
+// On entry ACCUM must hold the command to be excecuted:
+// All macros report actual position on completion
+//
+// ACCUM = 1:
+// - Motor on
+//
+// ACCUM = 2:
+// - Motor off
+//
+// ACCUM = 3:
+// - Start absolute position move
+// - Wait for trajectory generator ready
+// - Wait another 500 msec
+// - Report Actual position (Object 0x6064) to indicate command has been excecuted
+//
+// ACCUM == 4:
+// - Start absolute position move
+//
+0x00 W 0x012C05 0x3D // [MacroNumber 61]
+0x00 w 0x022C05 0
+0x00 W 0x032C05 0x62C024000000001 // 1: Motor on
+0x00 w 0x022C05 1
+0x00 W 0x032C05 0x52C04400000000A
+0x00 w 0x022C05 2
+0x00 W 0x032C05 0x62C024000000002 // 2: Motor off
+0x00 w 0x022C05 3
+0x00 W 0x032C05 0x52C04400000000D
+0x00 w 0x022C05 4
+0x00 W 0x032C05 0x62C024000000003 // 3: Move to target position and wait for trajectory generator ready
+0x00 w 0x022C05 5
+0x00 W 0x032C05 0x52C044000000010
+0x00 w 0x022C05 6
+0x00 W 0x032C05 0x62C024000000004 // 4: Start move to target position
+0x00 w 0x022C05 7
+0x00 W 0x032C05 0x52C044000000017
+0x00 w 0x022C05 8
+0x00 W 0x032C05 0x12C0040FFFFFFFF // -1 in ACCUM means error
+0x00 w 0x022C05 9
+0x00 W 0x032C05 0x52C04400000001B // Report ACCUM
+// CASE 1: Motor on
+0x00 w 0x022C05 10
+0x00 W 0x032C05 0x12C004000000005 // Code to switch motor on
+0x00 w 0x022C05 11
+0x00 W 0x032C05 0x12C04400000003F // Call system macro with 5 in ACCUM to switch the motor on
+0x00 w 0x022C05 12
+0x00 W 0x032C05 0x52C04400000001A // Report Ok
+// CASE 2: Motor off
+0x00 w 0x022C05 13
+0x00 W 0x032C05 0x12C004000000006 // Code to switch motor off
+0x00 w 0x022C05 14
+0x00 W 0x032C05 0x12C04400000003F // Call system macro with 6 in ACCUM to switch the motor off
+0x00 w 0x022C05 15
+0x00 W 0x032C05 0x52C04400000001A // Report Ok
+// CASE 3: Start with an absolute position move
+0x00 w 0x022C05 16
+0x00 W 0x032C05 0x12C004000000001
+0x00 w 0x022C05 17
+0x00 W 0x032C05 0x12C04400000003F // Call system macro with 1 in ACCUM to start absolute position move
+0x00 w 0x022C05 18
+0x00 W 0x032C05 0x162C014000006062 // Get position demand value in ACCUM
+0x00 w 0x022C05 19
+0x00 W 0x032C05 0x162C02400000607A // Compare with target position
+0x00 w 0x022C05 20
+0x00 W 0x032C05 0x62C0440FFFFFFFE // Loop until position demand value = target position
+0x00 w 0x022C05 21
+0x00 W 0x032C05 0xD2C0240000001F4
+0x00 w 0x022C05 22
+0x00 W 0x032C05 0x52C04400000001A // Report Ok
+//
+0x00 w 0x022C05 23
+0x00 W 0x032C05 0x12C004000000001 // CASE 4: Start an absolute position move
+0x00 w 0x022C05 24
+0x00 W 0x032C05 0x12C04400000003F // Call system macro with 1 in ACCUM to start absolute position move
+0x00 w 0x022C05 25
+0x00 W 0x032C05 0x52C04400000001A // Report Ok
+//
+0x00 w 0x022C05 26
+0x00 W 0x032C05 0x12C004000000000 // Report 0 in ACCUM means Ok
+0x00 w 0x022C05 27
+0x00 W 0x032C05 0x12C004100000000
+0x00 w 0x022C05 28
+0x00 W 0x032C05 0x22C044000000000 // Done

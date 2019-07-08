@@ -28,5 +28,4 @@ function actuator = SMAC_init(port)
     actuator.baudrate = 115200;
     
     fopen(actuator);
-    fwrite(actuator,'32 W 0x012C04 0');
 end

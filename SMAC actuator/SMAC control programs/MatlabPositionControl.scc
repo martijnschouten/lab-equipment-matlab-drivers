@@ -1,0 +1,12 @@
+[File created by SMAC Control Center v1.42]
+MacroNumber      0
+Homing           Endstop_and_indexpulse,Negative,Acc=10000,Vendstop=10000,Force=50,Vindex=500,Timeout=15000,Offset=0
+Wait             Time,Timeout=2000
+PositionMove     Absolute,Target=1800,Vel=30000,Acc=30000,Change_immediate
+Wait             Time,Timeout=1000
+PositionMove     Absolute,Target=0,Vel=30000,Acc=30000,Change_immediate
+Wait             Time,Timeout=6000
+Macro            Jump,MacroNumber=1
+MacroNumber      1
+PositionMove     Absolute,Target=,Vel=2000000,Acc=2000000,Change_immediate
+Macro            Jump,MacroNumber=1
