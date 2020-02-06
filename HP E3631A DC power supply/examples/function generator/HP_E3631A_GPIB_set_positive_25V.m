@@ -8,7 +8,7 @@ function  HP_E3631A_GPIB_set_positive_25V(powerSupply,voltage,current)
     %written using Matlab R2017a
     %to find the primary adress of the device run tmtool
     %scan for GPIB cards and scan for GPIB devices. 
-   
-    fprintf(powerSupply,['APPL P25V, ', num2str(voltage),', ', num2str(current)]);
+    %fprintf(powerSupply,'INST P25V' );
+    fprintf(powerSupply,['APPL P25V, ', num2str(voltage,'%.2f'),', ', num2str(current,'%.1f')]);
     
     

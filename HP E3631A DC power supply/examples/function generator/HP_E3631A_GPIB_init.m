@@ -20,6 +20,10 @@ function multimeter = HP_E3631A_GPIB_init(GPIB_adress)
         fclose(multimeter);
         multimeter = multimeter(1);
     end
+    
+    %use the \H terminator
+    sourcemeter.terminator = 13;
 
     fopen(multimeter);
+    fwrite(multimeter,'*RST')
     fwrite(multimeter,'OUTPUT ON')

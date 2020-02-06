@@ -5,12 +5,12 @@ powersupply = HP_E3631A_GPIB_init(22);
 
 tend = 100;
 
-Vmin = 0;
-Vmax = 50;
+Vmin = 10;
+Vmax = 20;
 
 fext = 0.02;
 
-compliance = 10e-3;
+compliance = 100e-3;
 
 i1 = 1;
 figure
@@ -30,9 +30,10 @@ time2 = [0];
 tic
 i1 = 1;
 while time2(i1) < tend
-    current(i1) = HP_E3631A_GPIB_get_current(powersupply);
+    test =  HP_E3631A_GPIB_get_current(powersupply);
+    current(i1) = test;
     voltage(i1) = (Vmax+Vmin)/2 + (Vmax-Vmin)/2*sin(2*pi*fext*time2(i1));
-    HP_E3631A_GPIB_set_dual(powersupply,voltage(i1),compliance);
+    HP_E3631A_GPIB_set_HV(powersupply,voltage(i1),compliance);
     
     
     time{i1} = datetime('now');

@@ -1,4 +1,4 @@
-function  HP_E3631A_GPIB_set_negative_25V(powerSupply,voltage,current)
+function  HP_E3631A_GPIB_set_positive_25V(powerSupply,voltage,current)
     %Initialise the connection to the HP34401A multimeter using GPIB
     %this program is written by Martijn Schouten
     %for questions email: m.schouten-1@alumnus.utwente.nl
@@ -8,8 +8,15 @@ function  HP_E3631A_GPIB_set_negative_25V(powerSupply,voltage,current)
     %written using Matlab R2017a
     %to find the primary adress of the device run tmtool
     %scan for GPIB cards and scan for GPIB devices. 
-    
-    command = ['APPL N25V, ', num2str(voltage,1),', ', num2str(current)]
+    %fprintf(powerSupply,'INST P25V' );
+    command = ['APPL P25V, ', num2str(voltage,'%.2f'),', ', num2str(current,'%.1f')]
     fprintf(powerSupply,command);
+    data = str2num(query(powerSupply,'get'));
+    %fprintf(powerSupply,'OUTPUT ON' );
+%     fprintf(powerSupply,'INST P25V' );
+%     fprintf(powerSupply,'VOLT 3.0');
+%     fprintf(powerSupply,'CURR 0.5');
+%     fprintf(powerSupply,'TRIG:SOUR IMM');
+%     fprintf(powerSupply,'INIT');
     
     
