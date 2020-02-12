@@ -1,5 +1,12 @@
 function sourcemeter = keithley_2410_serial_init(port)
 
+%When using this script make sure the 2410 is set to RS232 mode and the with the following settings:
+%BAUD: 9600
+%BITS: 8
+%PARITY: NONE
+%TERMINTATOR: <CR>
+%FLOW CONTROL: NONE
+
 %search if there is already a gpib-0-17 object
     sourcemeter = instrfind('Type', 'serial');
 
