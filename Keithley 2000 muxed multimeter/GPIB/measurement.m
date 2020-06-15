@@ -5,13 +5,13 @@ multimeter = keithley_2000_init(7);
 
 %fwrite(multimeter, ':CONF:RES');
 
-days = 1/24/3600*60;
+days = 10;
 tic
 i1 = 1;
 while(toc<days*3600*24)
-    for i2 = 6:10
+    for i2 = 2:5
         time{i1,i2} = clock;
-        data(i1,i2) = keithley_2000_get(multimeter,'RES',i2);
+        data(i1,i2) = keithley_2000_get(multimeter,'FRES',i2);
         pause(10)
     end
     i1 = i1 + 1
