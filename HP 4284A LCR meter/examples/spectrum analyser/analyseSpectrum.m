@@ -12,7 +12,7 @@ RLCmeter = HP4284A_init(GPIB_adress);
 tic
 for i2 = 1:sweeps
     for i1 = 1:frequs
-        tempdata = HP4284A_single(RLCmeter,frequencies(i1),0.01,bias,'ZTR','LONG',1);
+        tempdata = HP4284A_single(RLCmeter,frequencies(i1),0.5,bias,'ZTR','LONG',1);
         Zabs(i1,i2) = tempdata(1);
         phase(i1,i2) = tempdata(2);
         time(i1,i2) = toc;
