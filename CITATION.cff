@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Schouten"
+  given-names: "Martijn"
+  orcid: "https://orcid.org/0000-0001-9774-1195"
+- family-names: "Sanders"
+  given-names: "Remco"
+- family-names: "Krijnen"
+  given-names: "Gijs" 
+  orcid:  "https://orcid.org/0000-0001-9537-7123"
+title: "lab-equipment-matlab-drivers"
+version: 1.0.0
+doi: 10.5281/zenodo.1234
+date-released: 2021-12-02
+url: "https://github.com/martijnschouten/lab-equipment-matlab-drivers"
